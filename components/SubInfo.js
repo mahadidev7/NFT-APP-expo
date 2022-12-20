@@ -67,18 +67,25 @@ export const ImageCmp = ({ imgUrl, index }) => {
   );
 };
 
-export const Prople = () => {
+export const Prople = ({data}) => {
   return (
     <View
       style={{
         flexDirection: "row",
       }}
     >
-      {[assets.person02, assets.person03, assets.person04].map(
+    {
+      data?.bids?.map(item => item.image).map(
         (imgUrl, index) => (
           <ImageCmp imgUrl={imgUrl} index={index} key={`people-${index}`} />
         )
-      )}
+      )
+    }
+      {/* {[assets.person02, assets.person03, assets.person04].map(
+        (imgUrl, index) => (
+          <ImageCmp imgUrl={imgUrl} index={index} key={`people-${index}`} />
+        )
+      )} */}
     </View>
   );
 };
@@ -119,7 +126,7 @@ export const EndData = () => {
   );
 };
 
-export const SubInfo = () => {
+export const SubInfo = ({data}) => {
   return (
     <View
       style={{
@@ -130,7 +137,7 @@ export const SubInfo = () => {
         justifyContent: "space-between",
       }}
     >
-      <Prople />
+      <Prople data={data} />
       <EndData />
     </View>
   );
